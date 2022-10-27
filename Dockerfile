@@ -25,7 +25,7 @@ RUN PATH=$PATH:$GOPATH/bin; export PATH && \
     goofys --version
 
 FROM debian
-RUN apt update && apt install -y libfuse2 && \
+RUN apt update && apt install -y libfuse2 curl fuse && \
     rm -rf /var/lib/apt/lists/*
 COPY --from=goofys-builder /go/bin/goofys /usr/local/bin/goofys
 COPY --from=catfs-builder /usr/src/github.com/kahing/catfs/target/release/catfs /usr/local/bin/catfs
